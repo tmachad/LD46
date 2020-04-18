@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Wall Warning Light
+  m_Controller: {fileID: 9100000, guid: cdd2aadb7227fb2488cc44b483ac949e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: aa2e09934b87cee4995d3275c72a6867, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 55d956c37009d2d489bb63552c3f6bae, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 51baa5ca158a8bf4baa1af92af0e0515, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 60d38725c83c63749aafe7b37efed5ce, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 479d6268458aad4449ee9e88408a41c8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 844bb041c4df15c4e97a94431cf91e83, type: 2}

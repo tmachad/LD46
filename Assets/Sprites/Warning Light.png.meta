@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: 4344810133110875611
     second: Warning Light_1
+  - first:
+      213: 898925710785571664
+    second: Warning Light_2
+  - first:
+      213: -7406275467678392085
+    second: Warning Light_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -94,6 +100,48 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a58a3e2f0df694a8538c11d27b4a1a
+      internalID: -2933429532391087981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warning Light_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f42b1eecde813fd49adfc5f0c56f6b8e
+      internalID: 4344810133110875611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Warning Light_2
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 8
         height: 8
@@ -104,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad41a920ab3d17c4b92e51c7cf848f42
-      internalID: -2933429532391087981
+      spriteID: f2b9f552b8a3cb64181ae1f06adf588f
+      internalID: 898925710785571664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warning Light_1
+      name: Warning Light_3
       rect:
         serializedVersion: 2
         x: 8
@@ -125,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcbec0d732bee34478364be0db09fc9a
-      internalID: 4344810133110875611
+      spriteID: 7a8e7bc96886f0b4aaf015f0afadf4e5
+      internalID: -7406275467678392085
       vertices: []
       indices: 
       edges: []
