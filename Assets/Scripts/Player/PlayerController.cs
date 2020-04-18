@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Interaction")]
     [HideInInspector]
-    public List<StressSource> m_NearbyFixables;
+    public List<Breakable> m_NearbyFixables;
     public float m_FixSpeed;
 
     [Header("Health")]
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake()
     {
-        m_NearbyFixables = new List<StressSource>();
+        m_NearbyFixables = new List<Breakable>();
         m_InvulnDuration = 0;
     }
 

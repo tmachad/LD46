@@ -29,10 +29,10 @@ public class GameManager : MonoBehaviour
         if (m_TimeToNextFailure <= 0)
         {
             // Cause a failure somewhere and reset timer
-            List<StressSource> inactiveSources = m_StressSources.FindAll((source) => !source.m_Active);
+            List<StressSource> inactiveSources = m_StressSources.FindAll((source) => !source.isActiveAndEnabled);
             if (inactiveSources.Count > 0)
             {
-                inactiveSources[Random.Range(0, inactiveSources.Count)].Break();
+                inactiveSources[Random.Range(0, inactiveSources.Count)].GetComponent<Breakable>().Break();
             }
             m_TimeToNextFailure = Random.Range(m_MinFailureDelay, m_MaxFailureDelay);
         } else
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             m_TimeToNextFailure -= Time.deltaTime;
         }
 
-        if (m_StressSources.TrueForAll((source) => !source.m_Active))
+        if (m_StressSources.TrueForAll((source) => !source.isActiveAndEnabled))
         {
             // All stress sources are inactive, stress should decay
             m_Stress = Mathf.Max(0, m_Stress - m_StressDecayRate * Time.deltaTime);
