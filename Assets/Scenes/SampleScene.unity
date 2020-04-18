@@ -323,9 +323,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 8449772370296793695}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 8449772370296793696}
+        m_MethodName: Activate
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -361,9 +361,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8449772370296793695}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 8449772370296793696}
+        m_MethodName: Deactivate
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -427,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263180622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 503921401}
@@ -552,22 +552,6 @@ CompositeCollider2D:
         Y: 15000000
       - X: 50000000
         Y: -15000000
-    - - X: -20000000
-        Y: 225000000
-      - X: -200000000
-        Y: 225000000
-      - X: -200000000
-        Y: 220000000
-      - X: -170000000
-        Y: 220000000
-      - X: -170000000
-        Y: 165000000
-      - X: -200000000
-        Y: 165000000
-      - X: -200000000
-        Y: 160000000
-      - X: -20000000
-        Y: 160000000
     - - X: 200000000
         Y: 165000000
       - X: 170000000
@@ -583,6 +567,22 @@ CompositeCollider2D:
       - X: 20000000
         Y: 160000000
       - X: 200000000
+        Y: 160000000
+    - - X: -20000000
+        Y: 225000000
+      - X: -200000000
+        Y: 225000000
+      - X: -200000000
+        Y: 220000000
+      - X: -170000000
+        Y: 220000000
+      - X: -170000000
+        Y: 165000000
+      - X: -200000000
+        Y: 165000000
+      - X: -200000000
+        Y: 160000000
+      - X: -20000000
         Y: 160000000
     - - X: -35000000
         Y: 105000000
@@ -642,14 +642,6 @@ CompositeCollider2D:
       - {x: 9.5, y: 1.5}
       - {x: 5, y: 1.5}
       - {x: 5, y: -1.5}
-    - - {x: -2, y: 22.5}
-      - {x: -20, y: 22.5}
-      - {x: -20, y: 22}
-      - {x: -17, y: 22}
-      - {x: -17, y: 16.5}
-      - {x: -20, y: 16.5}
-      - {x: -20, y: 16}
-      - {x: -2, y: 16}
     - - {x: 20, y: 16.5}
       - {x: 17, y: 16.5}
       - {x: 17, y: 22}
@@ -658,6 +650,14 @@ CompositeCollider2D:
       - {x: 2, y: 22.5}
       - {x: 2, y: 16}
       - {x: 20, y: 16}
+    - - {x: -2, y: 22.5}
+      - {x: -20, y: 22.5}
+      - {x: -20, y: 22}
+      - {x: -17, y: 22}
+      - {x: -17, y: 16.5}
+      - {x: -20, y: 16.5}
+      - {x: -20, y: 16}
+      - {x: -2, y: 16}
     - - {x: -3.5, y: 10.5}
       - {x: -20, y: 10.5}
       - {x: -20, y: 10}
@@ -51632,7 +51632,7 @@ MonoBehaviour:
   m_StressProgressBar: {fileID: 16468980}
   m_MinStressFailureDelay: 10
   m_MaxStressFailureDelay: 15
-  m_TimeToNextStressFailure: 20
+  m_TimeToNextStressFailure: 10
   m_MinUtilityFailureDelay: 10
   m_MaxUtilityFailureDelay: 15
   m_TimeToNextUtilityFailure: 3
@@ -52146,6 +52146,75 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1001 &664494863845874447
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 664494862583078573, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_Name
+      value: Exposed Wires
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664494862583078572, guid: f4c0323409cecc348964e9c230aceb7b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4c0323409cecc348964e9c230aceb7b, type: 3}
 --- !u!1001 &1227048569712148435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52359,7 +52428,7 @@ PrefabInstance:
     - target: {fileID: 1599409388172015788, guid: 3fe49656b6187434d923963db6c91a7c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7583449024179867754, guid: 3fe49656b6187434d923963db6c91a7c,
         type: 3}
@@ -52368,9 +52437,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fe49656b6187434d923963db6c91a7c, type: 3}
---- !u!1 &8449772370296793695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1599409388172015788, guid: 3fe49656b6187434d923963db6c91a7c,
+--- !u!114 &8449772370296793696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1599409388172015763, guid: 3fe49656b6187434d923963db6c91a7c,
     type: 3}
   m_PrefabInstance: {fileID: 7165685979768525555}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9642c5102b92622478a686e16ceae47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

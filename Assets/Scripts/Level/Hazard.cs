@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider2D))]
@@ -11,7 +12,10 @@ public class Hazard : MonoBehaviour
     public float m_OnTimeRandomization;
     public float m_OffTime;
     public float m_OffTimeRandomization;
-    public bool m_StartOn;
+    public bool m_ActivateOnStart;
+    public UnityEvent m_OnActivated;
+    public UnityEvent m_OnDeactivated;
+
     private float m_TimeRemaining;
     private bool m_IsOn;
     private Animator m_Animator;
@@ -23,9 +27,12 @@ public class Hazard : MonoBehaviour
 
     private void Start()
     {
-        if (m_StartOn)
+        if (m_ActivateOnStart)
         {
-            TurnOn();
+            Activate();
+        } else
+        {
+            Deactivate();
         }
     }
 
@@ -74,5 +81,19 @@ public class Hazard : MonoBehaviour
         m_IsOn = false;
         m_TimeRemaining = m_OffTime + Random.Range(0, m_OffTimeRandomization);
         m_Animator.SetBool("On", false);
+    }
+
+    public void Activate()
+    {
+        TurnOn();
+        m_OnActivated.Invoke();
+        enabled = true;
+    }
+
+    public void Deactivate()
+    {
+        TurnOff();
+        m_OnDeactivated.Invoke();
+        enabled = false;
     }
 }
