@@ -11,39 +11,63 @@ public class GameManager : MonoBehaviour
     public float m_Stress;
     public float m_StressDecayRate;
     public StressProgress m_StressProgressBar;
-    private List<StressSource> m_StressSources;
+    
 
-    [Header("Failure Rate")]
-    public float m_MinFailureDelay;
-    public float m_MaxFailureDelay;
-    public float m_TimeToNextFailure;
+    [Header("Stress Source Failure Rate")]
+    public float m_MinStressFailureDelay;
+    public float m_MaxStressFailureDelay;
+    public float m_TimeToNextStressFailure;
+    private List<Breakable> m_StressSources;
+
+    [Header("Utility Failure Rate")]
+    public float m_MinUtilityFailureDelay;
+    public float m_MaxUtilityFailureDelay;
+    public float m_TimeToNextUtilityFailure;
+    private List<Breakable> m_Utilities;
+
 
     private void Awake()
     {
         Instance = this;
-        m_StressSources = new List<StressSource>(FindObjectsOfType<StressSource>());
+
+        List<Breakable> breakables = new List<Breakable>(FindObjectsOfType<Breakable>());
+        m_StressSources = breakables.FindAll((obj) => obj.GetComponent<StressSource>() != null);
+        m_Utilities = breakables.FindAll((obj) => obj.GetComponent<StressSource>() == null);
     }
 
     private void Update()
     {
-        if (m_TimeToNextFailure <= 0)
+        if (m_TimeToNextStressFailure <= 0)
         {
             // Cause a failure somewhere and reset timer
-            List<StressSource> inactiveSources = m_StressSources.FindAll((source) => !source.isActiveAndEnabled);
-            if (inactiveSources.Count > 0)
+            List<Breakable> workingSources = m_StressSources.FindAll((source) => !source.IsBroken());
+            if (workingSources.Count > 0)
             {
-                inactiveSources[Random.Range(0, inactiveSources.Count)].GetComponent<Breakable>().Break();
+                workingSources[Random.Range(0, workingSources.Count)].Break();
             }
-            m_TimeToNextFailure = Random.Range(m_MinFailureDelay, m_MaxFailureDelay);
+            m_TimeToNextStressFailure = Random.Range(m_MinStressFailureDelay, m_MaxStressFailureDelay);
         } else
         {
-            m_TimeToNextFailure -= Time.deltaTime;
+            m_TimeToNextStressFailure -= Time.deltaTime;
         }
 
         if (m_StressSources.TrueForAll((source) => !source.isActiveAndEnabled))
         {
             // All stress sources are inactive, stress should decay
             m_Stress = Mathf.Max(0, m_Stress - m_StressDecayRate * Time.deltaTime);
+        }
+
+        if (m_TimeToNextUtilityFailure <= 0)
+        {
+            List<Breakable> workingUtilities = m_Utilities.FindAll((util) => !util.IsBroken());
+            if (workingUtilities.Count > 0)
+            {
+                workingUtilities[Random.Range(0, workingUtilities.Count)].Break();
+            }
+            m_TimeToNextUtilityFailure = Random.Range(m_MinUtilityFailureDelay, m_MaxUtilityFailureDelay);
+        } else
+        {
+            m_TimeToNextUtilityFailure -= Time.deltaTime;
         }
     }
 

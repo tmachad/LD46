@@ -20,6 +20,8 @@ public class Breakable : MonoBehaviour
     public UnityEvent m_OnBreak;
     public UnityEvent m_OnFix;
 
+    private bool m_IsBroken = false;
+
     private void Start()
     {
         m_FixProgressImage.enabled = false;
@@ -66,6 +68,7 @@ public class Breakable : MonoBehaviour
         m_FixProgressImage.fillAmount = 0;
 
         m_FixProgressImage.enabled = true;
+        m_IsBroken = true;
         m_OnBreak.Invoke();
     }
 
@@ -77,7 +80,13 @@ public class Breakable : MonoBehaviour
         if (m_FixWorkRemaining <= 0)
         {
             m_FixProgressImage.enabled = false;
+            m_IsBroken = false;
             m_OnFix.Invoke();
         }
+    }
+
+    public bool IsBroken()
+    {
+        return m_IsBroken;
     }
 }

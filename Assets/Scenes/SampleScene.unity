@@ -51630,9 +51630,12 @@ MonoBehaviour:
   m_Stress: 0
   m_StressDecayRate: 1
   m_StressProgressBar: {fileID: 16468980}
-  m_MinFailureDelay: 10
-  m_MaxFailureDelay: 15
-  m_TimeToNextFailure: 2
+  m_MinStressFailureDelay: 10
+  m_MaxStressFailureDelay: 15
+  m_TimeToNextStressFailure: 20
+  m_MinUtilityFailureDelay: 10
+  m_MaxUtilityFailureDelay: 15
+  m_TimeToNextUtilityFailure: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
