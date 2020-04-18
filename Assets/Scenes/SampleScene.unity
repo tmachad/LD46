@@ -1095,36 +1095,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 214435450711505348, guid: 8a99d2c4f3ce42e4588108721fa7a9c6,
-        type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a99d2c4f3ce42e4588108721fa7a9c6, type: 3}
---- !u!1 &4561231475513501494 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4561231475513501494, guid: 8a99d2c4f3ce42e4588108721fa7a9c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 3008431767726578339}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4561231475513501495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4561231475513501494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0af56358bbbbde43b37f78ef0831808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_GroundSpeed: 3
-  m_AirDrag: 0.1
-  m_MaxJumpHeight: 3
-  m_JumpDownForce: 10
-  m_GroundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  m_GroundCheckDistance: 0.05

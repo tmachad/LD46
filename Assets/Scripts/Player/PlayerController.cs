@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour {
         Collider2D collider = Physics2D.OverlapBox(bottom, boxSize, 0, m_GroundLayer);
         bool wasGrounded = m_Grounded;
         m_Grounded = collider != null;
-        Debug.Log(m_Grounded);
 
 
         // Move horizontally if player is pressing a button, otherwise just maintain current horizontal velocity
