@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour {
     private int m_HitPoints;
     public float m_MaxInvulnDuration;
     private float m_InvulnDuration;
+    public Vector2 m_OnHitKnockback;
+    public float m_StunTime;
+    private float m_StunTimeRemaining;
 
     private Rigidbody2D m_Rigidbody;
     private Collider2D m_Collider;
@@ -51,12 +54,19 @@ public class PlayerController : MonoBehaviour {
     {
         // Handle fixing things
         bool fix = Input.GetAxisRaw("Fix") > 0;
+
+        if (m_StunTimeRemaining > 0)
+        {
+            fix = false;
+        }
+
         if (fix && m_NearbyFixables.Count > 0)
         {
             m_NearbyFixables[0].Fix(m_FixSpeed * Time.deltaTime);
         }
 
         m_InvulnDuration -= Time.deltaTime;
+        m_StunTimeRemaining -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -64,6 +74,12 @@ public class PlayerController : MonoBehaviour {
         bool jump = Input.GetAxisRaw("Jump") > 0;
         float horizontal = Input.GetAxisRaw("Horizontal");
         Vector2 velocity = new Vector2(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y);
+
+        if (m_StunTimeRemaining > 0)
+        {
+            jump = false;
+            horizontal = 0;
+        }
 
         // Check for ground below the player
         Vector2 bottom = new Vector2(transform.position.x + m_Collider.offset.x, transform.position.y + m_Collider.offset.y - m_Collider.bounds.extents.y);
@@ -129,6 +145,11 @@ public class PlayerController : MonoBehaviour {
             } else
             {
                 // React to damage (knockback, etc)
+                Vector2 knockback = m_OnHitKnockback;
+                knockback.x *= -Mathf.Sign(m_Rigidbody.velocity.x);
+                m_Rigidbody.velocity = knockback;
+                m_StunTimeRemaining = m_StunTime;
+
                 m_InvulnDuration = m_MaxInvulnDuration;
             }
         }

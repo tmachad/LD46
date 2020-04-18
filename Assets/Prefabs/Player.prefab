@@ -154,3 +154,5 @@ MonoBehaviour:
   m_MaxHitPoints: 3
   m_HitPoints: 3
   m_MaxInvulnDuration: 3
+  m_OnHitKnockback: {x: 5, y: 5}
+  m_StunTime: 0.5
