@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     private bool m_Grounded = false;
     private float m_JumpSpeed;
     private bool m_Jumping;
+    private bool m_JumpStillPressed;
 
     private void Awake()
     {
@@ -109,7 +110,7 @@ public class PlayerController : MonoBehaviour {
             velocity.x = velocity.x * (1 - m_AirDrag);
         }
 
-        if (jump && m_Grounded)
+        if (jump && m_Grounded && !m_JumpStillPressed)
         {
             // Pressing jump key while grounded, start jumping
             velocity.y = m_JumpSpeed;
@@ -127,6 +128,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         m_Rigidbody.velocity = velocity;
+        m_JumpStillPressed = jump;
     }
 
     /// <summary>
