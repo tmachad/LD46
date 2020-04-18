@@ -11,6 +11,7 @@ public class Hazard : MonoBehaviour
     public float m_OnTimeRandomization;
     public float m_OffTime;
     public float m_OffTimeRandomization;
+    public bool m_StartOn;
     private float m_TimeRemaining;
     private bool m_IsOn;
     private Animator m_Animator;
@@ -18,6 +19,14 @@ public class Hazard : MonoBehaviour
     private void Awake()
     {
         m_Animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        if (m_StartOn)
+        {
+            TurnOn();
+        }
     }
 
     private void Update()
