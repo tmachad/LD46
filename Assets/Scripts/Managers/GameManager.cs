@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("Stress")]
     public float m_MaxStress;
     public float m_Stress;
+    public float m_StressDecayRate;
     public StressProgress m_StressProgressBar;
     private List<StressSource> m_StressSources;
 
@@ -37,6 +38,12 @@ public class GameManager : MonoBehaviour
         } else
         {
             m_TimeToNextFailure -= Time.deltaTime;
+        }
+
+        if (m_StressSources.TrueForAll((source) => !source.m_Active))
+        {
+            // All stress sources are inactive, stress should decay
+            m_Stress = Mathf.Max(0, m_Stress - m_StressDecayRate * Time.deltaTime);
         }
     }
 

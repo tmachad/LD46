@@ -1959,11 +1959,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d0384450024e142b2c843bd94f391b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxStress: 1000
+  m_MaxStress: 100
   m_Stress: 0
+  m_StressDecayRate: 1
   m_StressProgressBar: {fileID: 16468980}
-  m_MinFailureDelay: 1
-  m_MaxFailureDelay: 2
+  m_MinFailureDelay: 10
+  m_MaxFailureDelay: 15
   m_TimeToNextFailure: 2
 --- !u!1 &519420028
 GameObject:
