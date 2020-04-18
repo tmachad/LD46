@@ -2653,6 +2653,10 @@ MonoBehaviour:
   m_PlayerLayer:
     serializedVersion: 2
     m_Bits: 512
+  m_OnTime: 1.5
+  m_OnTimeRandomization: 0
+  m_OffTime: 5
+  m_OffTimeRandomization: 0
 --- !u!61 &1896834899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2660,7 +2664,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896834896}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
