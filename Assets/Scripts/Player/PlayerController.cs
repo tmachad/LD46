@@ -15,22 +15,41 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float m_GroundCheckDistance = 0.05f;
 
+    [HideInInspector]
+    public List<StressSource> m_NearbyFixables;
+    public float m_FixSpeed;
+
     private Rigidbody2D m_Rigidbody;
     private Collider2D m_Collider;
     private bool m_Grounded = false;
     private float m_JumpSpeed;
     private bool m_Jumping;
 
+    private void Awake()
+    {
+        m_NearbyFixables = new List<StressSource>();
+    }
+
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Collider = GetComponent<Collider2D>();
-        m_JumpSpeed = Mathf.Sqrt(-2 * Physics2D.gravity.y * m_MaxJumpHeight);
+        m_JumpSpeed = Mathf.Sqrt(-2 * Physics2D.gravity.y * m_Rigidbody.gravityScale * m_MaxJumpHeight);
+    }
+
+    private void Update()
+    {
+        // Handle fixing things
+        bool fix = Input.GetAxisRaw("Fix") > 0;
+        if (fix && m_NearbyFixables.Count > 0)
+        {
+            m_NearbyFixables[0].Fix(m_FixSpeed * Time.deltaTime);
+        }
     }
 
     private void FixedUpdate()
     {
-        float vertical = Input.GetAxisRaw("Jump");
+        bool jump = Input.GetAxisRaw("Jump") > 0;
         float horizontal = Input.GetAxisRaw("Horizontal");
         Vector2 velocity = new Vector2(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y);
 
@@ -62,12 +81,12 @@ public class PlayerController : MonoBehaviour {
             velocity.x = velocity.x * (1 - m_AirDrag);
         }
 
-        if (vertical > 0 && m_Grounded)
+        if (jump && m_Grounded)
         {
             // Pressing jump key while grounded, start jumping
             velocity.y = m_JumpSpeed;
             m_Jumping = true;
-        } else if (vertical <= 0 && m_Jumping && m_Rigidbody.velocity.y > 0)
+        } else if (!jump && m_Jumping && m_Rigidbody.velocity.y > 0)
         {
             // Stopped holding the jump button while jumping and still rising, apply downward force to shorten jump
             m_Rigidbody.AddForce(Vector2.down * m_JumpDownForce * m_Rigidbody.mass);
