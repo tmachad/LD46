@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider2D))]
 public class Hazard : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class Hazard : MonoBehaviour
     public float m_OffTimeRandomization;
     private float m_TimeRemaining;
     private bool m_IsOn;
+    private Animator m_Animator;
+
+    private void Awake()
+    {
+        m_Animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -50,13 +57,13 @@ public class Hazard : MonoBehaviour
     {
         m_IsOn = true;
         m_TimeRemaining = m_OnTime + Random.Range(0, m_OnTimeRandomization);
-        // Trigger animation for ON state
+        m_Animator.SetBool("On", true);
     }
 
     private void TurnOff()
     {
         m_IsOn = false;
         m_TimeRemaining = m_OffTime + Random.Range(0, m_OffTimeRandomization);
-        // Trigger animation for OFF state
+        m_Animator.SetBool("On", false);
     }
 }

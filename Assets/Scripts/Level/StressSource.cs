@@ -23,6 +23,7 @@ public class StressSource : MonoBehaviour
 
     [Header("Hazards")]
     public Hazard[] m_Hazards;
+    public WarningLight m_WarningLight;
 
     private void Start()
     {
@@ -84,6 +85,7 @@ public class StressSource : MonoBehaviour
         {
             h.gameObject.SetActive(true);
         }
+        m_WarningLight.Blink();
     }
 
     public void Fix(float work)
@@ -99,6 +101,7 @@ public class StressSource : MonoBehaviour
             {
                 h.gameObject.SetActive(false);
             }
+            m_WarningLight.TurnOff();
         }
     }
 }
