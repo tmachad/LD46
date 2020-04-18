@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour { 
 
+    [Header("Movement")]
     public float m_GroundSpeed = 3.0f;
     public float m_AirDrag = 0.1f;
     public float m_MaxJumpHeight = 3.0f;
@@ -15,9 +16,17 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float m_GroundCheckDistance = 0.05f;
 
+    [Header("Interaction")]
     [HideInInspector]
     public List<StressSource> m_NearbyFixables;
     public float m_FixSpeed;
+
+    [Header("Health")]
+    public int m_MaxHitPoints;
+    [SerializeField]
+    private int m_HitPoints;
+    public float m_MaxInvulnDuration;
+    private float m_InvulnDuration;
 
     private Rigidbody2D m_Rigidbody;
     private Collider2D m_Collider;
@@ -28,6 +37,7 @@ public class PlayerController : MonoBehaviour {
     private void Awake()
     {
         m_NearbyFixables = new List<StressSource>();
+        m_InvulnDuration = 0;
     }
 
     private void Start()
@@ -45,6 +55,8 @@ public class PlayerController : MonoBehaviour {
         {
             m_NearbyFixables[0].Fix(m_FixSpeed * Time.deltaTime);
         }
+
+        m_InvulnDuration -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -99,5 +111,41 @@ public class PlayerController : MonoBehaviour {
         }
 
         m_Rigidbody.velocity = velocity;
+    }
+
+    /// <summary>
+    /// Modifies the player's health and triggers related effects.
+    /// </summary>
+    /// <param name="change">The amount to change the player's health.</param>
+    /// <returns>True if the player's health was actually changed, false otherwise.</returns>
+    public bool ChangeHealth(int change)
+    {
+        if (change < 0)
+        {
+            if (m_InvulnDuration > 0)
+            {
+                // Ignore damage when invulnerable
+                return false;
+            } else
+            {
+                // React to damage (knockback, etc)
+                m_InvulnDuration = m_MaxInvulnDuration;
+            }
+        }
+        if (change > 0 && m_HitPoints < m_MaxHitPoints)
+        {
+            // Got healing
+        }
+
+        int initialHP = m_HitPoints;
+        m_HitPoints += change;
+        m_HitPoints = Mathf.Clamp(m_HitPoints, 0, m_MaxHitPoints);
+
+        if (m_HitPoints == 0)
+        {
+            // HP reached zero, do something?
+        }
+
+        return initialHP != m_HitPoints;
     }
 }

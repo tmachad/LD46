@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Collider2D))]
 public class StressSource : MonoBehaviour
 {
     [Header("Stress")]
@@ -20,15 +21,25 @@ public class StressSource : MonoBehaviour
     public Image m_FixProgressImage;
     public LayerMask m_PlayerLayer;
 
+    [Header("Hazards")]
+    public Hazard[] m_Hazards;
+
+    private void Start()
+    {
+        m_FixProgressImage.enabled = false;
+        foreach (Hazard h in m_Hazards)
+        {
+            h.gameObject.SetActive(false);
+        }
+
+        m_FixProgressImage.fillAmount = 0;
+    }
+
     private void Update()
     {
         if (m_Active)
         {
             GameManager.Instance.m_Stress += m_StressPerSecond * Time.deltaTime;
-            m_FixProgressImage.enabled = true;
-        } else
-        {
-            m_FixProgressImage.enabled = false;
         }
 
         if (m_FixProgressDecays)
@@ -67,17 +78,27 @@ public class StressSource : MonoBehaviour
         m_Active = true;
         m_FixWorkRemaining = m_FixWork;
         m_FixDecayDelayRemaining = m_FixDecayDelay;
+
+        m_FixProgressImage.enabled = true;
+        foreach (Hazard h in m_Hazards)
+        {
+            h.gameObject.SetActive(true);
+        }
     }
 
     public void Fix(float work)
     {
         m_FixWorkRemaining -= work;
         m_FixDecayDelayRemaining = m_FixDecayDelay;
+
         if (m_FixWorkRemaining <= 0)
         {
             m_Active = false;
+            m_FixProgressImage.enabled = false;
+            foreach (Hazard h in m_Hazards)
+            {
+                h.gameObject.SetActive(false);
+            }
         }
-
-        Debug.Log("Fixing " + work + " work of progress. " + m_FixWorkRemaining + " work remaining.");
     }
 }

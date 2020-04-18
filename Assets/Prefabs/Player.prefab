@@ -100,7 +100,7 @@ Rigidbody2D:
   m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &2250597115079326893
@@ -151,3 +151,6 @@ MonoBehaviour:
   m_GroundCheckDistance: 0.05
   m_NearbyFixables: []
   m_FixSpeed: 1
+  m_MaxHitPoints: 3
+  m_HitPoints: 3
+  m_MaxInvulnDuration: 3
