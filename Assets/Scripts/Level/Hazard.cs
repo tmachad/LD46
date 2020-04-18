@@ -41,7 +41,7 @@ public class Hazard : MonoBehaviour
         m_TimeRemaining -= Time.deltaTime;
         if (m_TimeRemaining <= 0)
         {
-            if (m_IsOn)
+            if (m_IsOn && m_OffTime > 0)
             {
                 TurnOff();
             } else
