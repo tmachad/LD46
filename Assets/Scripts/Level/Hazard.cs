@@ -12,6 +12,7 @@ public class Hazard : MonoBehaviour
     public float m_OffTime;
     public float m_OffTimeRandomization;
     public bool m_ActivateOnStart;
+    public float m_ActivationDelay;
     public UnityEvent m_OnActivated;
     public UnityEvent m_OnDeactivated;
 
@@ -84,7 +85,14 @@ public class Hazard : MonoBehaviour
 
     public void Activate()
     {
-        TurnOn();
+        if (m_ActivationDelay > 0)
+        {
+            TurnOff();
+            m_TimeRemaining = m_ActivationDelay;
+        } else
+        {
+            TurnOn();
+        }
         m_OnActivated.Invoke();
         enabled = true;
     }
