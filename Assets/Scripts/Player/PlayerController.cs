@@ -196,7 +196,6 @@ public class PlayerController : MonoBehaviour {
 
     public void PlaySparkBurst()
     {
-        Debug.Log("Playing Burst");
         m_ParticleSystem.Play();
     }
 }
