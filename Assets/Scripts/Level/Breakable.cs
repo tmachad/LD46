@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Collider2D))]
 public class Breakable : MonoBehaviour
 {
+    [Header("Fix Interaction")]
     public float m_FixWork;
     public bool m_FixProgressDecays;
     [Tooltip("The work per second of fix progress lost when decay starts.")]
@@ -17,6 +18,7 @@ public class Breakable : MonoBehaviour
     public Image m_FixProgressImage;
     public LayerMask m_PlayerLayer;
 
+    [Header("Events")]
     public UnityEvent m_OnBreak;
     public UnityEvent m_OnFix;
 

@@ -8,6 +8,10 @@ public class CameraFollow : MonoBehaviour
     public GameObject m_FollowTarget;
     public Bounds m_Bounds;
 
+    [Header("Camera Shake")]
+    public float m_ShakeDecayRate;
+    public float m_ShakeStrength;
+
     private Camera m_Camera;
 
     private void Awake()
@@ -60,6 +64,12 @@ public class CameraFollow : MonoBehaviour
         {
             // Camera will be outside left edge of bounds, snap to left edge of bounds instead
             cameraPos.x = camBounds.min.x + cameraHalfSize.x;
+        }
+
+        if (m_ShakeStrength > 0)
+        {
+            cameraPos = cameraPos + (Vector3)(Random.insideUnitCircle.normalized * m_ShakeStrength);
+            m_ShakeStrength -= m_ShakeDecayRate * Time.deltaTime;
         }
 
         m_Camera.transform.localPosition = cameraPos;

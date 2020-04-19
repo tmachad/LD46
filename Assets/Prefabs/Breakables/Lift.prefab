@@ -10071,6 +10071,7 @@ GameObject:
   - component: {fileID: 1227048570590814522}
   - component: {fileID: 1227048570590814521}
   - component: {fileID: 1227048570590814520}
+  - component: {fileID: 1004576489}
   m_Layer: 0
   m_Name: Lift
   m_TagString: Untagged
@@ -10166,6 +10167,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1004576489}
+        m_MethodName: Explode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_OnFix:
@@ -10195,3 +10207,25 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1004576489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227048570590814523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b79c67bf2b46e4c9c64f5701c8c71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExplosionPrefab: {fileID: 8448293917412974985, guid: f9ecf1dfa1bd42e4b98041a50dba7450,
+    type: 3}
+  m_ExplosionCount: 10
+  m_BurstDuration: 1
+  m_SpawnArea:
+    m_Center: {x: 0, y: 0.5, z: 0}
+    m_Extent: {x: 1, y: 1, z: 0}
+  m_EnableCameraShake: 1
+  m_CameraShakeStrength: 1
+  m_CameraShakeMaxDistance: 35
