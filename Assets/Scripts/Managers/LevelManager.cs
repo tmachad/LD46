@@ -19,11 +19,13 @@ public class LevelManager : MonoBehaviour
 
     public void Reload()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(m_ThisScene);
     }
 
     public void MainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(m_MainMenuScene);
     }
 
