@@ -9,6 +9,8 @@ public class ExplosiveSource : MonoBehaviour
     public int m_ExplosionCount;
     public float m_BurstDuration;
     public Bounds m_SpawnArea;
+    public int m_EnableSoundInterval;
+    public float m_RandomPitchChange;
 
     [Header("Camera Shake")]
     public bool m_EnableCameraShake;
@@ -68,6 +70,17 @@ public class ExplosiveSource : MonoBehaviour
                 Random.Range(m_SpawnArea.min.y, m_SpawnArea.max.y)
             );
             m_Explosions[i].transform.localPosition = pos;
+            AudioSource source = m_Explosions[i].GetComponent<AudioSource>();
+
+            if (i % m_EnableSoundInterval != 0)
+            {
+                source.enabled = false;
+            } else
+            {
+                source.enabled = true;
+                source.pitch = 1 + Random.Range(-m_RandomPitchChange, m_RandomPitchChange);
+            }
+
             m_Explosions[i].SetActive(true);
 
             yield return new WaitForSeconds(interval);

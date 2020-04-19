@@ -7,10 +7,18 @@ public class Lift : MonoBehaviour
     public Vector2 m_Force;
     public LayerMask m_PlayerLayer;
 
+    private AudioSource m_AudioSource;
+
+    private void Awake()
+    {
+        m_AudioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (LayerUtil.GameObjectInLayerMask(collision.gameObject, m_PlayerLayer))
         {
+            m_AudioSource.Play();
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(m_Force, ForceMode2D.Impulse);
         }
     }

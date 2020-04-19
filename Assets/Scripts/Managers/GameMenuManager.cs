@@ -41,6 +41,12 @@ public class GameMenuManager : MonoBehaviour
         Time.timeScale = 0;
         m_PauseMenu.SetActive(true);
         m_Paused = true;
+
+        AudioSource[] sources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource source in sources)
+        {
+            source.mute = true;
+        }
     }
 
     public void ResumeGame()
@@ -48,6 +54,12 @@ public class GameMenuManager : MonoBehaviour
         Time.timeScale = 1;
         m_PauseMenu.SetActive(false);
         m_Paused = false;
+
+        AudioSource[] sources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource source in sources)
+        {
+            source.mute = false;
+        }
     }
 
     public void GameOver()
