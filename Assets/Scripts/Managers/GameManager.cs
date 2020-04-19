@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public float m_Stress;
     public float m_StressDecayRate;
     public StressProgress m_StressProgressBar;
-    
+
 
     [Header("Stress Source Failure Rate")]
     public float m_MinStressFailureDelay;
@@ -46,7 +46,8 @@ public class GameManager : MonoBehaviour
                 workingSources[Random.Range(0, workingSources.Count)].Break();
             }
             m_TimeToNextStressFailure = Random.Range(m_MinStressFailureDelay, m_MaxStressFailureDelay);
-        } else
+        }
+        else
         {
             m_TimeToNextStressFailure -= Time.deltaTime;
         }
@@ -65,7 +66,8 @@ public class GameManager : MonoBehaviour
                 workingUtilities[Random.Range(0, workingUtilities.Count)].Break();
             }
             m_TimeToNextUtilityFailure = Random.Range(m_MinUtilityFailureDelay, m_MaxUtilityFailureDelay);
-        } else
+        }
+        else
         {
             m_TimeToNextUtilityFailure -= Time.deltaTime;
         }
@@ -81,4 +83,5 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over");
         }
     }
+
 }
