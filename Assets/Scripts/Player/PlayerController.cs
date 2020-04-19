@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour { 
 
@@ -38,10 +39,15 @@ public class PlayerController : MonoBehaviour {
     private bool m_Jumping;
     private bool m_JumpStillPressed;
 
+    private ParticleSystem m_ParticleSystem;
+    private Animator m_Animator;
+
     private void Awake()
     {
         m_NearbyFixables = new List<Breakable>();
         m_InvulnDuration = 0;
+        m_ParticleSystem = GetComponent<ParticleSystem>();
+        m_Animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -64,6 +70,10 @@ public class PlayerController : MonoBehaviour {
         if (fix && m_NearbyFixables.Count > 0)
         {
             m_NearbyFixables[0].Fix(m_FixSpeed * Time.deltaTime);
+            m_Animator.SetBool("Fixing", m_NearbyFixables[0].IsBroken());
+        } else
+        {
+            m_Animator.SetBool("Fixing", false);
         }
 
         m_InvulnDuration -= Time.deltaTime;
@@ -88,6 +98,7 @@ public class PlayerController : MonoBehaviour {
         Collider2D collider = Physics2D.OverlapBox(bottom, boxSize, 0, m_GroundLayer);
         bool wasGrounded = m_Grounded;
         m_Grounded = collider != null;
+        m_Animator.SetBool("Grounded", m_Grounded);
 
 
         // Move horizontally if player is pressing a button, otherwise just maintain current horizontal velocity
@@ -129,6 +140,7 @@ public class PlayerController : MonoBehaviour {
 
         m_Rigidbody.velocity = velocity;
         m_JumpStillPressed = jump;
+        m_Animator.SetFloat("Horizontal Speed", Mathf.Abs(velocity.x));
     }
 
     /// <summary>
@@ -151,6 +163,7 @@ public class PlayerController : MonoBehaviour {
                 knockback.x *= -Mathf.Sign(m_Rigidbody.velocity.x);
                 m_Rigidbody.velocity = knockback;
                 m_StunTimeRemaining = m_StunTime;
+                m_Animator.SetTrigger("Hit");
 
                 m_InvulnDuration = m_MaxInvulnDuration;
             }
@@ -170,5 +183,11 @@ public class PlayerController : MonoBehaviour {
         }
 
         return initialHP != m_HitPoints;
+    }
+
+    public void PlaySparkBurst()
+    {
+        Debug.Log("Playing Burst");
+        m_ParticleSystem.Play();
     }
 }
