@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Collider2D))]
 public class Hazard : MonoBehaviour
 {
     public LayerMask m_PlayerLayer;
