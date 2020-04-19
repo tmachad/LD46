@@ -7,6 +7,7 @@ public class GameMenuManager : MonoBehaviour
     public static GameMenuManager Instance;
 
     public GameObject m_PauseMenu;
+    public GameObject m_GameOverMenu;
 
     private bool m_Paused;
 
@@ -17,6 +18,8 @@ public class GameMenuManager : MonoBehaviour
         Time.timeScale = 1;
         m_PauseMenu.SetActive(false);
         m_Paused = false;
+
+        m_GameOverMenu.SetActive(false);
     }
 
     private void Update()
@@ -45,5 +48,10 @@ public class GameMenuManager : MonoBehaviour
         Time.timeScale = 1;
         m_PauseMenu.SetActive(false);
         m_Paused = false;
+    }
+
+    public void GameOver()
+    {
+        m_GameOverMenu.SetActive(true);
     }
 }

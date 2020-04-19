@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour
 
         if (m_Stress >= m_MaxStress)
         {
-            Debug.Log("Game Over");
+            GetComponent<ExplosiveSource>().Explode();
+            GameMenuManager.Instance.GameOver();
         }
     }
 
