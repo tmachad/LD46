@@ -16,18 +16,27 @@ public class Breakable : MonoBehaviour
     private float m_FixWorkRemaining;
     private float m_FixDecayDelayRemaining;
     public Image m_FixProgressImage;
+    public Image m_FixIndicatorImage;
     public LayerMask m_PlayerLayer;
 
     [Header("Events")]
     public UnityEvent m_OnBreak;
     public UnityEvent m_OnFix;
 
+    private Collider2D m_Collider;
+
     private bool m_IsBroken = false;
+
+    private void Awake()
+    {
+        m_Collider = GetComponent<Collider2D>();
+    }
 
     private void Start()
     {
         m_FixProgressImage.enabled = false;
         m_FixProgressImage.fillAmount = 0;
+        m_FixIndicatorImage.enabled = false;
     }
 
     private void Update()
@@ -51,6 +60,10 @@ public class Breakable : MonoBehaviour
         {
             PlayerController player = collision.GetComponent<PlayerController>();
             player.m_NearbyFixables.Add(this);
+            if (IsBroken())
+            {
+                m_FixIndicatorImage.enabled = true;
+            }
         }
     }
 
@@ -60,6 +73,7 @@ public class Breakable : MonoBehaviour
         {
             PlayerController player = collision.GetComponent<PlayerController>();
             player.m_NearbyFixables.Remove(this);
+            m_FixIndicatorImage.enabled = false;
         }
     }
 
@@ -68,6 +82,11 @@ public class Breakable : MonoBehaviour
         m_FixWorkRemaining = m_FixWork;
         m_FixDecayDelayRemaining = m_FixDecayDelay;
         m_FixProgressImage.fillAmount = 0;
+
+        if (m_Collider.IsTouchingLayers(m_PlayerLayer))
+        {
+            m_FixIndicatorImage.enabled = true;
+        }
 
         m_FixProgressImage.enabled = true;
         m_IsBroken = true;
@@ -82,6 +101,7 @@ public class Breakable : MonoBehaviour
         if (m_FixWorkRemaining <= 0)
         {
             m_FixProgressImage.enabled = false;
+            m_FixIndicatorImage.enabled = false;
             m_IsBroken = false;
             m_OnFix.Invoke();
         }
