@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour {
         if (m_StunTimeRemaining > 0)
         {
             fix = false;
+        } else
+        {
+            m_Animator.SetBool("Stunned", false);
         }
 
         if (fix && m_NearbyFixables.Count > 0)
@@ -74,6 +77,11 @@ public class PlayerController : MonoBehaviour {
         } else
         {
             m_Animator.SetBool("Fixing", false);
+        }
+
+        if (m_InvulnDuration < 0)
+        {
+            m_Animator.SetBool("Invulnerable", false);
         }
 
         m_InvulnDuration -= Time.deltaTime;
@@ -163,7 +171,8 @@ public class PlayerController : MonoBehaviour {
                 knockback.x *= -Mathf.Sign(m_Rigidbody.velocity.x);
                 m_Rigidbody.velocity = knockback;
                 m_StunTimeRemaining = m_StunTime;
-                m_Animator.SetTrigger("Hit");
+                m_Animator.SetBool("Stunned", true);
+                m_Animator.SetBool("Invulnerable", true);
 
                 m_InvulnDuration = m_MaxInvulnDuration;
             }

@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -3955962190072255229
     second: Head_2
+  - first:
+      213: -8333657801256368871
+    second: Head_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -72,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -83,7 +86,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,6 +100,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d558e4893e8088f4ab928411e99d0165
+      internalID: -5156993582514690110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Head_1
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 16
         width: 8
         height: 8
@@ -107,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7ac30d3717a8e3428324ea7454fdeff
-      internalID: -5156993582514690110
+      spriteID: 48ee9495f238ab84ab435889eb3ad033
+      internalID: -6184859061300815021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Head_1
+      name: Head_2
       rect:
         serializedVersion: 2
         x: 0
@@ -128,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32ccb24cddaadc64f854de38f478fb73
-      internalID: -6184859061300815021
+      spriteID: 7ebfe70fce3aa8f4c9745b3296c13331
+      internalID: -3955962190072255229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Head_2
+      name: Head_3
       rect:
         serializedVersion: 2
         x: 0
@@ -149,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b52c27691c3f814d803b6bba83a88df
-      internalID: -3955962190072255229
+      spriteID: 8e2ffdb36930c52478e86cddcbbc0e79
+      internalID: -8333657801256368871
       vertices: []
       indices: 
       edges: []
