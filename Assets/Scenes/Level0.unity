@@ -52440,7 +52440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxStress: 100
   m_Stress: 0
-  m_StressDecayRate: 1
+  m_StressDecayRate: 3
   m_StressProgressBar: {fileID: 16468980}
   m_MinStressFailureDelay: 10
   m_MaxStressFailureDelay: 25
@@ -58713,7 +58713,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnFix.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
-      objectReference: {fileID: 1342007235}
+      objectReference: {fileID: 504625814}
     - target: {fileID: 7716560097518161357, guid: 7e4eca8d05ad20144bfc8bfee36bd20b,
         type: 3}
       propertyPath: m_OnFix.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName

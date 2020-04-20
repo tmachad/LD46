@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             m_TimeToNextStressFailure -= Time.deltaTime;
         }
 
-        if (m_StressSources.TrueForAll((source) => !source.isActiveAndEnabled))
+        if (m_StressSources.TrueForAll((source) => !source.IsBroken()))
         {
             // All stress sources are inactive, stress should decay
             m_Stress = Mathf.Max(0, m_Stress - m_StressDecayRate * Time.deltaTime);
