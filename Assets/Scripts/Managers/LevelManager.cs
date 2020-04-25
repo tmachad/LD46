@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(TimeManager))]
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
-    public string m_MainMenuScene;
+    public string[] m_Scenes;
 
     private string m_ThisScene;
 
@@ -19,18 +20,22 @@ public class LevelManager : MonoBehaviour
 
     public void Reload()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(m_ThisScene);
+        LoadScene(m_ThisScene);
     }
 
-    public void MainMenu()
+    public void LoadScene(int index)
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(m_MainMenuScene);
+        LoadScene(m_Scenes[index]);
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    private void LoadScene(string sceneName)
+    {
+        TimeManager.Instance.Resume();
+        SceneManager.LoadScene(sceneName);
     }
 }
