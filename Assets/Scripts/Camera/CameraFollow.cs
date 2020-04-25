@@ -21,8 +21,8 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 cameraPos = m_Camera.transform.localPosition;
-        Vector3 targetPos = m_FollowTarget.transform.localPosition;
+        Vector3 cameraPos = m_Camera.transform.position;
+        Vector3 targetPos = m_FollowTarget.transform.position;
         Vector2 cameraHalfSize = new Vector2(m_Camera.orthographicSize * m_Camera.aspect, m_Camera.orthographicSize);
         Rect camBounds = new Rect(
             m_Bounds.min.x,
@@ -72,7 +72,7 @@ public class CameraFollow : MonoBehaviour
             m_ShakeStrength -= m_ShakeDecayRate * Time.deltaTime;
         }
 
-        m_Camera.transform.localPosition = cameraPos;
+        m_Camera.transform.position = cameraPos;
     }
 
     private void OnDrawGizmos()
