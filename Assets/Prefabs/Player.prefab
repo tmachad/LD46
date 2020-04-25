@@ -1037,17 +1037,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroundSpeed: 5
   m_AirDrag: 0.1
-  m_MaxJumpHeight: 4
-  m_JumpDownForce: 30
+  m_AirControl: 1
+  m_MaxJumpHeight: 5
+  m_MinJumpHeight: 2
   m_GroundLayer:
     serializedVersion: 2
     m_Bits: 256
   m_GroundCheckDistance: 0.05
+  m_HorizontalAxis: Horizontal
+  m_JumpAxis: Jump
+  m_IgnoreInputs: 0
   m_NearbyFixables: []
   m_FixSpeed: 1
   m_MaxHitPoints: 3
   m_HitPoints: 3
-  m_MaxInvulnDuration: 3
+  m_InvulnTime: 3
   m_OnHitKnockback: {x: 5, y: 5}
   m_StunTime: 1.5
 --- !u!199 &677568601
