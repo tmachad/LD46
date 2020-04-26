@@ -819,7 +819,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2b6cb527711448a44b1c8402cd734d66, type: 3}
-  m_Color: {r: 0.2688679, g: 0.81441784, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -978,7 +978,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2b6cb527711448a44b1c8402cd734d66, type: 3}
-  m_Color: {r: 0.27058825, g: 0.8156863, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -1288,6 +1288,18 @@ MonoBehaviour:
   m_InvulnTime: 3
   m_OnHitKnockback: {x: 5, y: 5}
   m_StunTime: 1.5
+  m_LightColor: {r: 0.015686275, g: 0.6392157, b: 0.95294124, a: 1}
+  m_BodyColor: {r: 0.7176471, g: 0.8000001, b: 0.60784316, a: 1}
+  m_LightSprites:
+  - {fileID: 1075759076}
+  - {fileID: 1583066232}
+  m_BodySprites:
+  - {fileID: 426037501}
+  - {fileID: 632957926}
+  - {fileID: 2134581558}
+  - {fileID: 446366917}
+  - {fileID: 1418984350}
+  - {fileID: 700602678}
 --- !u!199 &677568601
 ParticleSystemRenderer:
   serializedVersion: 6

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : PlatformerPlayerController { 
 
-    [Header("Interaction")]
+    
     [HideInInspector]
     public List<Breakable> m_NearbyFixables;
+    [Header("Interaction")]
     public float m_FixSpeed;
 
     [Header("Health")]
@@ -16,7 +17,12 @@ public class PlayerController : PlatformerPlayerController {
     public float m_InvulnTime;
     public Vector2 m_OnHitKnockback;
     public float m_StunTime;
-    
+
+    [Header("Appearance")]
+    public Color m_LightColor;
+    public Color m_BodyColor;
+    public SpriteRenderer[] m_LightSprites;
+    public SpriteRenderer[] m_BodySprites;
 
     // Component references
     private ParticleSystem m_ParticleSystem;
@@ -33,6 +39,18 @@ public class PlayerController : PlatformerPlayerController {
         m_NearbyFixables = new List<Breakable>();
         m_InvulnTimeRemaining = 0;
         m_ParticleSystem = GetComponent<ParticleSystem>();
+    }
+
+    private void Start()
+    {
+        foreach(SpriteRenderer s in m_LightSprites)
+        {
+            s.color *= m_LightColor;
+        }
+        foreach(SpriteRenderer s in m_BodySprites)
+        {
+            s.color *= m_BodyColor;
+        }
     }
 
     protected override void Update()
