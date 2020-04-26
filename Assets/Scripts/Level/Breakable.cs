@@ -26,10 +26,12 @@ public class Breakable : MonoBehaviour
     private Collider2D m_Collider;
 
     private bool m_IsBroken = false;
+    private bool m_IsCritical;
 
     private void Awake()
     {
         m_Collider = GetComponent<Collider2D>();
+        m_IsCritical = GetComponent<StressSource>() != null;
     }
 
     private void Start()
@@ -110,5 +112,10 @@ public class Breakable : MonoBehaviour
     public bool IsBroken()
     {
         return m_IsBroken;
+    }
+
+    public bool IsCritical()
+    {
+        return m_IsCritical;
     }
 }
