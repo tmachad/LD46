@@ -19,10 +19,8 @@ public class PlayerController : PlatformerPlayerController {
     public float m_StunTime;
 
     [Header("Appearance")]
-    public Color m_LightColor;
-    public Color m_BodyColor;
-    public SpriteRenderer[] m_LightSprites;
-    public SpriteRenderer[] m_BodySprites;
+    public Material m_ColorPalette;
+    public SpriteRenderer[] m_SpriteRenderers;
 
     // Component references
     private ParticleSystem m_ParticleSystem;
@@ -38,18 +36,17 @@ public class PlayerController : PlatformerPlayerController {
         base.Awake();
         m_NearbyFixables = new List<Breakable>();
         m_InvulnTimeRemaining = 0;
-        m_ParticleSystem = GetComponent<ParticleSystem>();
+        m_ParticleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Start()
     {
-        foreach(SpriteRenderer s in m_LightSprites)
+        if (m_ColorPalette)
         {
-            s.color *= m_LightColor;
-        }
-        foreach(SpriteRenderer s in m_BodySprites)
-        {
-            s.color *= m_BodyColor;
+            foreach (SpriteRenderer s in m_SpriteRenderers)
+            {
+                s.material = m_ColorPalette;
+            }
         }
     }
 

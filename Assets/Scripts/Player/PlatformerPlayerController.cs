@@ -21,6 +21,9 @@ public class PlatformerPlayerController : MonoBehaviour
     public string m_JumpAxis = "Jump";
     public bool m_IgnoreInputs = false;
 
+    [Header("Appearance")]
+    public Transform m_SpritesRoot;
+
     // Component references
     protected Animator m_Animator;
     protected Collider2D m_Collider;
@@ -39,6 +42,11 @@ public class PlatformerPlayerController : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         m_Collider = GetComponent<Collider2D>();
         m_Rigidbody = GetComponent<Rigidbody2D>();
+
+        if (!m_SpritesRoot)
+        {
+            m_SpritesRoot = transform;
+        }
     }
 
     protected virtual void Update()
@@ -91,7 +99,7 @@ public class PlatformerPlayerController : MonoBehaviour
             }
 
             // Update transform scale to flip player to face the direction they're moving
-            Vector3 scale = transform.localScale;
+            Vector3 scale = m_SpritesRoot.localScale;
             if (m_HorizontalInput < 0)
             {
                 // Going left, flip to face left
@@ -102,7 +110,7 @@ public class PlatformerPlayerController : MonoBehaviour
                 // Going right, flip to face right
                 scale.x = Mathf.Abs(scale.x);
             }
-            transform.localScale = scale;
+            m_SpritesRoot.localScale = scale;
         }
         else if (!m_Grounded)
         {
