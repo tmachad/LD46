@@ -230,6 +230,8 @@ MonoBehaviour:
   m_OffTimeRandomization: 0
   m_ActivateOnStart: 0
   m_ActivationDelay: 0
+  m_WarmUpTime: 1
+  m_CoolDownTime: 0
   m_OnActivated:
     m_PersistentCalls:
       m_Calls: []

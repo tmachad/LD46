@@ -13,6 +13,8 @@ public class Hazard : MonoBehaviour
     public float m_OffTimeRandomization;
     public bool m_ActivateOnStart;
     public float m_ActivationDelay;
+    public float m_WarmUpTime;
+    public float m_CoolDownTime;
     public UnityEvent m_OnActivated;
     public UnityEvent m_OnDeactivated;
 
@@ -72,15 +74,17 @@ public class Hazard : MonoBehaviour
     private void TurnOn()
     {
         m_IsOn = true;
-        m_TimeRemaining = m_OnTime + Random.Range(0, m_OnTimeRandomization);
+        m_TimeRemaining = m_WarmUpTime + m_OnTime + Random.Range(0, m_OnTimeRandomization);
         m_Animator.SetBool("On", true);
+        m_Animator.SetFloat("TransitionSpeed", 1 / m_WarmUpTime);
     }
 
     private void TurnOff()
     {
         m_IsOn = false;
-        m_TimeRemaining = m_OffTime + Random.Range(0, m_OffTimeRandomization);
+        m_TimeRemaining = m_CoolDownTime + m_OffTime + Random.Range(0, m_OffTimeRandomization);
         m_Animator.SetBool("On", false);
+        m_Animator.SetFloat("TransitionSpeed", 1 / m_CoolDownTime);
     }
 
     public void Activate()
