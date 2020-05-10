@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider2D))]
 public class Breakable : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Breakable : MonoBehaviour
     public UnityEvent m_OnBreak;
     public UnityEvent m_OnFix;
 
+    private Animator m_Animator;
     private Collider2D m_Collider;
 
     private bool m_IsBroken = false;
@@ -30,6 +32,7 @@ public class Breakable : MonoBehaviour
 
     private void Awake()
     {
+        m_Animator = GetComponent<Animator>();
         m_Collider = GetComponent<Collider2D>();
         m_IsCritical = GetComponent<StressSource>() != null;
     }
@@ -92,6 +95,7 @@ public class Breakable : MonoBehaviour
 
         m_FixProgressImage.enabled = true;
         m_IsBroken = true;
+        m_Animator.SetBool("Broken", true);
         m_OnBreak.Invoke();
     }
 
@@ -105,6 +109,7 @@ public class Breakable : MonoBehaviour
             m_FixProgressImage.enabled = false;
             m_FixIndicatorImage.enabled = false;
             m_IsBroken = false;
+            m_Animator.SetBool("Broken", false);
             m_OnFix.Invoke();
         }
     }
