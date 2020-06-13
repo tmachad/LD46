@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ExplosiveSource : MonoBehaviour
@@ -32,11 +33,15 @@ public class ExplosiveSource : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.TransformPoint(m_SpawnArea.center), m_SpawnArea.size);
+        if (Selection.activeGameObject == transform.gameObject)
+        {
+            // Only draw indicators if selected
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(transform.TransformPoint(m_SpawnArea.center), m_SpawnArea.size);
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, m_CameraShakeMaxDistance);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, m_CameraShakeMaxDistance);
+        }
     }
 
     public void Explode()
