@@ -311,6 +311,98 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1080669675, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080669675, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080669675, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080669675, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080669675, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080669675, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080669675, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080669675, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 49151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080669676, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e0b31298d520484d91a2b76b91089d0, type: 2}
+    - target: {fileID: 369991319, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991319, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ShapeModule.sphericalDirectionAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 49151
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991317, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 369991318, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e0b31298d520484d91a2b76b91089d0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eaba79fa2d48de4cb51eb55206a50ca, type: 3}
 --- !u!1001 &75029122
